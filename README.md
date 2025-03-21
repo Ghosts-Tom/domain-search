@@ -26,8 +26,8 @@
 
 1. 克隆仓库：
 ```bash
-git clone https://github.com/yourusername/domain-generator.git
-cd domain-generator
+git clone https://github.com/yourusername/domain-search.git  
+cd domain-search
 ```
 
 2. 构建并运行 Docker 容器：
@@ -105,5 +105,3 @@ MIT License
 [Tom]
 
 ## 致谢
-
-感谢所有贡献者的付出！ 
