@@ -1,4 +1,4 @@
-# Domain Generator
+# Domain Search
 
 一个智能域名生成和检查工具，可以帮助你快速生成域名创意并检查其可用性。
 
@@ -22,21 +22,26 @@
 
 ## 快速开始
 
-### 使用 Docker 运行
+### 使用 Docker 部署
 
 1. 克隆仓库：
 ```bash
-git clone https://github.com/yourusername/domain-generator.git
-cd domain-generator
+git clone https://github.com/yourusername/search-domain.git
+cd search-domain
 ```
 
-2. 构建并运行 Docker 容器：
+2. 创建缓存文件：
 ```bash
-docker-compose up --build -d
+touch whois_cache.json
 ```
 
-3. 访问应用：
-打开浏览器访问 `http://localhost:8080`
+3. 构建并启动容器：
+```bash
+docker-compose up -d
+```
+
+4. 访问应用：
+打开浏览器访问 `http://你的服务器IP:8888`
 
 ### 本地运行
 
@@ -52,10 +57,31 @@ venv\Scripts\activate     # Windows
 pip install -r requirements.txt
 ```
 
-3. 运行应用：
+3. 创建缓存文件：
+```bash
+touch whois_cache.json
+```
+
+4. 运行应用：
 ```bash
 python main.py --web
 ```
+
+5. 访问应用：
+打开浏览器访问 `http://localhost:5000`
+
+### Docker 配置说明
+
+- 镜像名称：search-domain:latest
+- 容器名称：domain-service
+- 端口映射：8888:5000
+- 数据卷：whois_cache.json
+- 环境变量：
+  - FLASK_APP=main.py
+  - FLASK_ENV=production
+  - PYTHONUNBUFFERED=1
+  - TZ=Asia/Shanghai
+  - FLASK_RUN_HOST=0.0.0.0
 
 ## API 接口
 
@@ -74,27 +100,6 @@ python main.py --web
 - 方法：POST
 - 参数：
   - domain: 域名
-
-## 配置说明
-
-### 环境变量
-- `FLASK_APP`: 应用入口文件
-- `FLASK_ENV`: 运行环境
-- `PYTHONUNBUFFERED`: Python 输出缓冲设置
-- `TZ`: 时区设置
-
-### Docker 配置
-- 端口映射：8080:5000
-- 数据卷：whois_cache.json
-- 健康检查：每30秒检查一次
-
-## 贡献指南
-
-1. Fork 项目
-2. 创建特性分支
-3. 提交更改
-4. 推送到分支
-5. 创建 Pull Request
 
 ## 许可证
 
