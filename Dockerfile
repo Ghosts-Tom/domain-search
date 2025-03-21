@@ -44,18 +44,19 @@ RUN chown -R appuser:appuser /app
 USER appuser
 
 # 暴露端口
-EXPOSE 5000
+EXPOSE 8888
 
 # 设置环境变量
 ENV FLASK_APP=main.py \
     FLASK_ENV=production \
     PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    TZ=Asia/Shanghai
+    TZ=Asia/Shanghai \
+    FLASK_RUN_HOST=0.0.0.0
 
 # 健康检查
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
-    CMD curl -f http://localhost:5000/ || exit 1
+    CMD curl -f http://localhost:8888/ || exit 1
 
 # 启动命令
 CMD ["python", "main.py", "--web"] 
