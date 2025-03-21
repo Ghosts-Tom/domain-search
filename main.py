@@ -417,6 +417,6 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.web:
-        app.run(host='0.0.0.0', port=5000)
+        app.run(host='0.0.0.0', port=8888)
     else:
         print("Please use --web flag to run web server") 

@@ -6,7 +6,8 @@ services:
     image: search-domain:latest
     container_name: domain-service
     restart: unless-stopped
-    network_mode: "host"
+    ports:
+      - "8888:8888"
     environment:
       - FLASK_APP=main.py
       - FLASK_ENV=production
