@@ -411,15 +411,12 @@ def refresh_whois():
             'error': str(e)
         }), 500
 
-def main():
-    parser = argparse.ArgumentParser(description='域名生成器')
-    parser.add_argument('--web', action='store_true', help='启动Web界面')
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='Domain Generator Service')
+    parser.add_argument('--web', action='store_true', help='Run web server')
     args = parser.parse_args()
 
     if args.web:
-        app.run(host='0.0.0.0', port=5000, debug=False)
+        app.run(host='0.0.0.0', port=5000)
     else:
-        print("请在命令行模式下使用")
-
-if __name__ == '__main__':
-    main() 
+        print("Please use --web flag to run web server") 

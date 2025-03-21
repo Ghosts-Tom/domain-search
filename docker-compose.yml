@@ -6,13 +6,12 @@ services:
     image: search-domain:latest
     container_name: domain-service
     restart: unless-stopped
-    ports:
-      - "8888:5000"
-    volumes:
-      - ./whois_cache.json:/app/whois_cache.json
+    network_mode: "host"
     environment:
       - FLASK_APP=main.py
       - FLASK_ENV=production
       - PYTHONUNBUFFERED=1
       - TZ=Asia/Shanghai
-      - FLASK_RUN_HOST=0.0.0.0 
+      - FLASK_RUN_HOST=0.0.0.0
+    volumes:
+      - ./whois_cache.json:/app/whois_cache.json 
