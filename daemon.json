@@ -1,0 +1,8 @@
+{
+  "registry-mirrors": ["https://docker.1panel.dev"],
+  "proxies": {
+    "http-proxy": "http://docker.1panel.dev:3128",
+    "https-proxy": "http://docker.1panel.dev:3128",
+    "no-proxy": "localhost,127.0.0.1"
+  }
+} 
