@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   domain-app:
@@ -7,7 +7,7 @@ services:
     container_name: domain-service
     restart: unless-stopped
     ports:
-      - "8888:8888"
+      - '8888:8888'
     environment:
       - FLASK_APP=main.py
       - FLASK_ENV=production
@@ -15,4 +15,4 @@ services:
       - TZ=Asia/Shanghai
       - FLASK_RUN_HOST=0.0.0.0
     volumes:
-      - ./whois_cache.json:/app/whois_cache.json 
+      - ./whois_cache.json:/app/whois_cache.json
